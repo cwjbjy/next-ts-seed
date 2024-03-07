@@ -1,0 +1,16 @@
+$color: red;
+$primary-color: #64ff00;
+
+//定义局部样式
+.title {
+  color: $color;
+}
+
+//在CSS Module中导出scss变量
+:export {
+  primaryColor: $primary-color;
+}
+
+.btn {
+  color: $btn-color;
+}
