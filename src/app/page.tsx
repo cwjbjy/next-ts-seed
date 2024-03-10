@@ -1,10 +1,8 @@
-import { Button } from 'antd';
 import Link from 'next/link';
 
 const Home = () => (
   <div className="App">
-    <Link href={''}></Link>
-    <Button type="primary">Button</Button>
+    <Link href={'/blog/1'}>博客</Link>
   </div>
 );
 
