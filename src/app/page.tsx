@@ -1,9 +1,12 @@
-import Link from 'next/link';
+import { getNews } from '@/apis/api';
 
-const Home = () => (
-  <div className="App">
-    <Link href={'/blog/1'}>博客</Link>
-  </div>
-);
-
-export default Home;
+export default async function Home() {
+  const list = await getNews();
+  return (
+    <article>
+      {list.map((o: any) => (
+        <div key={o.id}>{o.name}</div>
+      ))}
+    </article>
+  );
+}

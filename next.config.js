@@ -4,7 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   sassOptions: {
-    additionalData: '@import "@/styles/index.scss";',
+    additionalData: '@import "@/assets/styles/index.scss";',
   },
   images: {
     remotePatterns: [
