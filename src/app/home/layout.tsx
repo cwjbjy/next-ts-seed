@@ -1,8 +1,17 @@
-export default function HomeLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({
+  children,
+  team,
+  analytics,
+}: {
+  children: React.ReactNode;
+  analytics: React.ReactNode;
+  team: React.ReactNode;
+}) {
   return (
     <section>
-      布局页面
       {children}
+      {team}
+      {analytics}
     </section>
   );
 }
