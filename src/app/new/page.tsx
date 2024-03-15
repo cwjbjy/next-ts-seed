@@ -1,9 +1,19 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import { useSearchParams } from 'next/navigation';
 
-export default function New() {
+function New() {
   const searchParams = useSearchParams();
 
-  return <>Search: {searchParams.get('id')}</>;
+  return <Suspense>Search: {searchParams.get('id')}</Suspense>;
+}
+
+export default function Page() {
+  return (
+    <Suspense>
+      <New />
+    </Suspense>
+  );
 }
