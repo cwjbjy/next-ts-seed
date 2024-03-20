@@ -1,3 +1,7 @@
 export default async function Home() {
-  return <article>首页</article>;
+  return (
+    <article>
+      <div className="text-base p-1 border border-black border-solid">guang</div>
+    </article>
+  );
 }
