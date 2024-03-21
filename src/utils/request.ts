@@ -62,10 +62,21 @@ class Request {
    */
   interceptorsResponse<T>(res: Response): Promise<T> {
     return new Promise((resolve, reject) => {
+      const requestUrl = res.url;
       if (res.ok) {
         return resolve(res.json() as Promise<T>);
       } else {
-        return reject({ message: '接口错误' });
+        res
+          .clone()
+          .text()
+          .then((text) => {
+            try {
+              const errorData = JSON.parse(text);
+              return reject({ message: errorData || '接口错误', url: requestUrl });
+            } catch (error) {
+              return reject({ error, url: requestUrl });
+            }
+          });
       }
     });
   }
