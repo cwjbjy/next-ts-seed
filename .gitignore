@@ -38,3 +38,4 @@ next-env.d.ts
 #lock
 package-lock.json
 yarn.lock
+certificates
