@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV_PLATFORM=window next dev -p 3003 --experimental-https",
+    "dev": "cross-env NODE_ENV_PLATFORM=window next dev -p 3001 --experimental-https",
     "dev:l": "cross-env NODE_ENV_PLATFORM=linux next dev -p 3001 --experimental-https",
     "build": "next build",
     "build:analyze": "cross-env ANALYZE=true next build",
