@@ -1,12 +1,13 @@
 import { getItem } from './utils';
 
-export default async function Home() {
+export default async function Layout({ children }: { children: React.ReactNode }) {
   const data = await getItem();
   return (
-    <article>
+    <section>
       {data.map((o) => (
         <div key={o.id}>{o.name}</div>
       ))}
-    </article>
+      ------{children}
+    </section>
   );
 }
