@@ -1,3 +1,5 @@
+import 'server-only';
+
 import request from '@/utils/request';
 
 import type { New } from './model';
