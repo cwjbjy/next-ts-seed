@@ -73,8 +73,8 @@ class Request {
             try {
               const errorData = JSON.parse(text);
               return reject({ message: errorData || '接口错误', url: requestUrl });
-            } catch (error) {
-              return reject({ error, url: requestUrl });
+            } catch (text) {
+              return reject({ message: text, url: requestUrl });
             }
           });
       }
