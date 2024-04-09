@@ -22,6 +22,7 @@ const nextConfig = {
       },
     ],
   },
+  poweredByHeader: false,
 };
 
 export default withBundleAnalyzer(nextConfig);
