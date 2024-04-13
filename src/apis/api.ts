@@ -7,6 +7,6 @@ import type { New } from './model';
 export const getNews = (params?: Record<string, any>) => {
   return request.get<New[]>('/list', {
     params,
-    time: 0,
+    cacheTime: 0,
   });
 };

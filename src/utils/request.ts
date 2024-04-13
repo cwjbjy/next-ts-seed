@@ -3,7 +3,7 @@ import queryString from 'query-string';
 type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 interface Params {
-  time?: number; //缓存时间，单位为s。默认强缓存，0为不缓存
+  cacheTime?: number; //缓存时间，单位为s。默认强缓存，0为不缓存
   params?: Record<string, any>;
 }
 
@@ -18,7 +18,7 @@ class Request {
   /**
    * 请求拦截器
    */
-  interceptorsRequest({ url, method, params, time }: Props) {
+  interceptorsRequest({ url, method, params, cacheTime }: Props) {
     let queryParams = ''; //url参数
     let requestPayload = ''; //请求体数据
     //请求头
@@ -27,9 +27,9 @@ class Request {
     };
 
     const config: Config =
-      time || time === 0
-        ? time > 0
-          ? { next: { revalidate: time } }
+      cacheTime || cacheTime === 0
+        ? cacheTime > 0
+          ? { next: { revalidate: cacheTime } }
           : { cache: 'no-store' }
         : { cache: 'force-cache' };
 
@@ -73,7 +73,7 @@ class Request {
             try {
               const errorData = JSON.parse(text);
               return reject({ message: errorData || '接口错误', url: requestUrl });
-            } catch (text) {
+            } catch {
               return reject({ message: text, url: requestUrl });
             }
           });
@@ -86,7 +86,7 @@ class Request {
       url: process.env.NEXT_PUBLIC_BASEURL + url,
       method,
       params: params.params,
-      time: params.time,
+      cacheTime: params.cacheTime,
     });
     const res = await fetch(req.url, req.options);
     return this.interceptorsResponse<T>(res);
